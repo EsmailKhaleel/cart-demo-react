@@ -8,6 +8,7 @@ import denimPioneer from './assets/denim-pioneer.jpg';
 export const DUMMY_PRODUCTS = [
   {
     id: 'p1',
+    stock: 3,
     image: mochaOvercoat,
     title: 'Majestic Vintage Mocha Overcoat',
     price: 129.99,
@@ -16,6 +17,7 @@ export const DUMMY_PRODUCTS = [
   },
   {
     id: 'p2',
+    stock: 35,
     image: dreamGown,
     title: 'Enchanting Blush Dream Gown',
     price: 189.99,
@@ -25,6 +27,7 @@ export const DUMMY_PRODUCTS = [
 
   {
     id: 'p3',
+    stock: 7,
     image: rainJacket,
     title: 'Vintage Sunshine Rain Jacket',
     price: 49.99,
@@ -33,6 +36,7 @@ export const DUMMY_PRODUCTS = [
   },
   {
     id: 'p4',
+    stock: 12,
     image: merlotSuit,
     title: 'Classic Merlot Business Suit',
     price: 249.99,
@@ -41,6 +45,7 @@ export const DUMMY_PRODUCTS = [
     },
     {
     id: 'p5',
+    stock: 7,
     image: moonlightDress,
     title: 'Ethereal Moonlight Evening Dress',
     price: 159.99,
@@ -49,6 +54,7 @@ export const DUMMY_PRODUCTS = [
     },
     {
     id: 'p6',
+    stock: 5,
     image: denimPioneer,
     title: 'Pioneer Rugged Denim Jacket',
     price: 79.99,

@@ -1,7 +1,8 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react'
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 import { createPortal } from 'react-dom';
 import Cart from './Cart';
-const CartModal = forwardRef(function (props, ref) {
+
+const CartModal = forwardRef(function CartModal(props, ref) {
   const dialog = useRef();
 
   useImperativeHandle(ref, () => {
