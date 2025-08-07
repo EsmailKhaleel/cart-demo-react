@@ -17,7 +17,7 @@ export const DUMMY_PRODUCTS = [
   },
   {
     id: 'p2',
-    stock: 35,
+    stock: 2,
     image: dreamGown,
     title: 'Enchanting Blush Dream Gown',
     price: 189.99,
@@ -45,7 +45,7 @@ export const DUMMY_PRODUCTS = [
     },
     {
     id: 'p5',
-    stock: 7,
+    stock: 5,
     image: moonlightDress,
     title: 'Ethereal Moonlight Evening Dress',
     price: 159.99,
@@ -54,7 +54,7 @@ export const DUMMY_PRODUCTS = [
     },
     {
     id: 'p6',
-    stock: 5,
+    stock: 2,
     image: denimPioneer,
     title: 'Pioneer Rugged Denim Jacket',
     price: 79.99,

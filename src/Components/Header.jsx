@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { CartContext } from '../Store/CartContextProvider';
 import CartModal from './CartModal';
 function Header() {
@@ -23,11 +23,9 @@ function Header() {
                     <img src="logo.png" alt="Elegant model" />
                     <h1>Elegant Cart</h1>
                 </div>
-                <p>
                     <button
                         onClick={handleOpenCart}
-                    >Cart <span id='badge'>{items.length}</span></button>
-                </p>
+                    >Cart (<span id='badge'>{items.length}</span>)</button>
             </header>
         </>
     )

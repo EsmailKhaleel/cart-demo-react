@@ -6,6 +6,8 @@ export const CartContext = createContext({
   items: [],
   products: [],
   handleAddToCart: () => { },
+  clearCart: () => { },
+  cartTotal: '0.00',
 });
 
 function cartReducer(state, action) {
@@ -17,13 +19,15 @@ function cartReducer(state, action) {
     const updatedProducts = [...state.products];
     const productIndex = updatedProducts.findIndex(product => product.id === action.payload);
 
+    // stop adding instead increase quantity
     if (existingCartItem) {
-      // stop adding instead increase quantity
       const updatedItem = {
         ...existingCartItem,
         quantity: existingCartItem.quantity + 1,
       };
+      // update quantity
       updatedItems[existingCartItemIndex] = updatedItem;
+      // update stock
       updatedProducts[productIndex] = {
         ...updatedProducts[productIndex],
         stock: updatedProducts[productIndex].stock - 1
@@ -51,12 +55,14 @@ function cartReducer(state, action) {
   }
   if (action.type === 'UPDATE_ITEM_QUANTITY') {
     const updatedItems = [...state.items];
-    const updatedProducts = [...state.products];
     const updatedItemIndex = updatedItems.findIndex(item => item.id === action.payload);
-    const productIndex = updatedProducts.findIndex(product => product.id === action.payload);
     const updatedItem = {
       ...updatedItems[updatedItemIndex]
     };
+
+    const updatedProducts = [...state.products];
+    const productIndex = updatedProducts.findIndex(product => product.id === action.payload);
+
     action.isIncrement ?
       updatedItem.quantity += 1
       : updatedItem.quantity -= 1;
@@ -72,6 +78,12 @@ function cartReducer(state, action) {
     return {
       items: updatedItems,
       products: updatedProducts,
+    };
+  }
+  if (action.type === 'CLEAR_CART') {
+    return {
+      items: [],
+      products: DUMMY_PRODUCTS,
     };
   }
   return state;
@@ -99,13 +111,20 @@ function CartContextProvider({ children }) {
       isIncrement: isIncrement
     });
   }
-  console.log(shoppingCart);
+
+  function clearCart() {
+    shoppingCartDispatch({
+      type: 'CLEAR_CART'
+    });
+  }
 
   const cartCtx = {
     items: shoppingCart.items,
     products: shoppingCart.products,
     handleAddToCart,
     updateItemQuantity,
+    clearCart,
+    cartTotal: shoppingCart.items.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)
   };
   return (
     <CartContext.Provider value={cartCtx}>{children}</CartContext.Provider>
